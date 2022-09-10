@@ -22,8 +22,9 @@ int main() {
         cout << "Anda termasuk ke dalam kelompok " << kelompok << "\n";
 
         if (kelompok != "ideal") {
-            int berat_ideal_kg = round(19 * pow(tinggi_m, 2));
-            cout << "Agar BMI anda ideal, minimal berat badan anda harus " << berat_ideal_kg << " kg\n";
+            int min_berat_ideal_kg = round(19 * pow(tinggi_m, 2));
+            int max_berat_ideal_kg = round(24.5 * pow(tinggi_m, 2));
+            cout << "Agar BMI anda ideal, berat badan anda harus diantara " << min_berat_ideal_kg << " - " << max_berat_ideal_kg << " kg\n";
         }
 
         char lanjut;
