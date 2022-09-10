@@ -1,9 +1,11 @@
 #include <iostream>
 #include <cmath>
+#include <tuple>
 using namespace std;
 
 double hitung_bmi(double berat_kg, double tinggi_m);
 string tentukan_kelompok(double bmi);
+tuple<int, int> hitung_berat_ideal(double tinggi_m);
 
 int main() {
     cout << "BMI (Body Mass Index) Calculator" << "\n";
@@ -22,8 +24,8 @@ int main() {
         cout << "Anda termasuk ke dalam kelompok " << kelompok << "\n";
 
         if (kelompok != "ideal") {
-            int min_berat_ideal_kg = round(19 * pow(tinggi_m, 2));
-            int max_berat_ideal_kg = round(24.5 * pow(tinggi_m, 2));
+            int min_berat_ideal_kg, max_berat_ideal_kg;
+            tie(min_berat_ideal_kg, max_berat_ideal_kg) = hitung_berat_ideal(tinggi_m);
             cout << "Agar BMI anda ideal, berat badan anda harus diantara " << min_berat_ideal_kg << " - " << max_berat_ideal_kg << " kg\n";
         }
 
@@ -56,4 +58,10 @@ string tentukan_kelompok(double bmi) {
     }
 
     return kelompok;
+}
+
+tuple<int, int> hitung_berat_ideal(double tinggi_m) {
+    int min_berat_ideal_kg = round(19 * pow(tinggi_m, 2));
+    int max_berat_ideal_kg = round(24.5 * pow(tinggi_m, 2));
+    return make_tuple(min_berat_ideal_kg, max_berat_ideal_kg);
 }
