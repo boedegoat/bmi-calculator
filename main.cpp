@@ -1,5 +1,5 @@
 #include <iostream>
-#include "bmi.h"
+#include "bmi.hpp"
 using namespace std;
 
 int main() {
